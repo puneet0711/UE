@@ -348,6 +348,7 @@ srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/asn1
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/common/block_queue.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/common/buffer_pool.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/common/common.h
+srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/common/gen_mch_tables.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/common/interfaces_common.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/common/log.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/common/mac_pcap.h
@@ -355,8 +356,10 @@ srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/comm
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/common/pdu.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/common/pdu_queue.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/common/security.h
+srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/common/thread_pool.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/common/threads.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/common/timers.h
+srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/common/trace.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/common/tti_sync.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/common/tti_sync_cv.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/config.h
@@ -421,6 +424,7 @@ srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/phy/
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/phy/resampling/decim.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/phy/resampling/interp.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/phy/resampling/resample_arb.h
+srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/phy/rf/rf.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/phy/scrambling/scrambling.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/phy/sync/cfo.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/phy/sync/cp.h
@@ -440,6 +444,7 @@ srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/phy/
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/phy/utils/filter.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/phy/utils/ringbuffer.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/phy/utils/vector.h
+srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/radio/radio.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/srslte.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../lib/include/srslte/upper/rlc_interface.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../srsue/hdr/mac/demux.h
@@ -454,6 +459,9 @@ srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../srsue/hdr/mac/proc_ra.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../srsue/hdr/mac/proc_sr.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../srsue/hdr/mac/ul_harq.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../srsue/hdr/mac/ul_sps.h
+srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../srsue/hdr/phy/phch_common.h
+srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../srsue/hdr/phy/phch_worker.h
+srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../srsue/hdr/phy/phy_metrics.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: ../srsue/src/mac/proc_bsr.cc
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o: lib/include/srslte/version.h
 

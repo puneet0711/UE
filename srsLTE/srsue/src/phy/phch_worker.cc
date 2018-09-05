@@ -240,11 +240,24 @@ float phch_worker::get_cfo()
   return cfo;
 }
 
+
+int PRBlen = 0;
+int phch_worker::variable(int NBRVALUE){
+PRBlen = NBRVALUE;
+return PRBlen;
+
+}
+
 void phch_worker::work_imp()
 {
   if (!cell_initiated) {
     return; 
   }
+  
+  if (PRBlen!=0){                // Author: Puneet Sharma
+	Info ("Vaue of new NBR is %d\n", PRBlen);  // Author : Puneet Sharma
+}
+
 
   pthread_mutex_lock(&mutex);
 

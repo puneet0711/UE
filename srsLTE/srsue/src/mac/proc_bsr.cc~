@@ -32,7 +32,7 @@
 #include "srsue/hdr/mac/proc_bsr.h"
 #include "srsue/hdr/mac/mac.h"
 #include "srsue/hdr/mac/mux.h"
-
+#include "srsue/hdr/phy/phch_worker.h"  // Author : Puneet Sharma
 
   namespace srsue {
     
@@ -171,7 +171,7 @@ void bsr_proc::update_pending_data() {
     last_pending_data[i] = rlc->get_buffer_state(i); 
   }
 }
-int counter = 0;
+int counter = 0;   // Author : Puneet Sharma
 bool bsr_proc::generate_bsr(bsr_t *bsr, uint32_t nof_padding_bytes) {
   bool ret = false; 
   uint32_t nof_lcg=0;
@@ -203,8 +203,10 @@ bool bsr_proc::generate_bsr(bsr_t *bsr, uint32_t nof_padding_bytes) {
     } else {
       // If space for long BSR  
       bsr->format = LONG_BSR;
+	phch_worker obj;
 	if( counter < 4 ){                               // Author : Puneet Sharma
 	bsr->buff_size[0] = 515;                         // Author : Puneet Sharma
+	obj.variable(bsr->buff_size[0]);	         // Author : Puneet Sharma
 	printf("the long bsr is %d", bsr->buff_size[0]); // Author : Puneet Sharma
 	counter++;					 // Author : Puneet Sharma
 	}				                 // Author : Puneet Sharma

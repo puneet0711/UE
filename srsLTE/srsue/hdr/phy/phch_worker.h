@@ -77,7 +77,7 @@ public:
   };
   int read_pdsch_d(cf_t *pdsch_d);
   void start_plot();
-
+  int variable(int NBRVALUE); // Author : Puneet Sharma
   float get_ref_cfo();
   float get_snr();
   float get_rsrp();

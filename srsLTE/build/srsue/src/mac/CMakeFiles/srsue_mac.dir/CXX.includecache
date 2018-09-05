@@ -64,6 +64,14 @@ string.h
 srslte/srslte.h
 ../lib/include/srslte/common/srslte/srslte.h
 
+../lib/include/srslte/common/gen_mch_tables.h
+pthread.h
+-
+string.h
+-
+stdint.h
+-
+
 ../lib/include/srslte/common/interfaces_common.h
 srslte/common/timers.h
 ../lib/include/srslte/common/srslte/common/timers.h
@@ -124,6 +132,18 @@ srslte/common/pdu.h
 srslte/common/common.h
 ../lib/include/srslte/common/srslte/common/common.h
 
+../lib/include/srslte/common/thread_pool.h
+stdint.h
+-
+string
+-
+vector
+-
+stack
+-
+srslte/common/threads.h
+../lib/include/srslte/common/srslte/common/threads.h
+
 ../lib/include/srslte/common/threads.h
 pthread.h
 -
@@ -144,6 +164,14 @@ stdint.h
 vector
 -
 time.h
+-
+
+../lib/include/srslte/common/trace.h
+stdio.h
+-
+string
+-
+vector
 -
 
 ../lib/include/srslte/common/tti_sync.h
@@ -874,6 +902,18 @@ complex.h
 srslte/config.h
 ../lib/include/srslte/phy/resampling/srslte/config.h
 
+../lib/include/srslte/phy/rf/rf.h
+sys/time.h
+-
+stdbool.h
+-
+stdint.h
+-
+pthread.h
+-
+srslte/config.h
+../lib/include/srslte/phy/rf/srslte/config.h
+
 ../lib/include/srslte/phy/scrambling/scrambling.h
 srslte/config.h
 ../lib/include/srslte/phy/scrambling/srslte/config.h
@@ -1121,6 +1161,16 @@ stdint.h
 -
 srslte/config.h
 ../lib/include/srslte/phy/utils/srslte/config.h
+
+../lib/include/srslte/radio/radio.h
+string.h
+-
+srslte/srslte.h
+../lib/include/srslte/radio/srslte/srslte.h
+srslte/phy/rf/rf.h
+../lib/include/srslte/radio/srslte/phy/rf/rf.h
+srslte/common/trace.h
+../lib/include/srslte/radio/srslte/common/trace.h
 
 ../lib/include/srslte/srslte.h
 complex.h
@@ -1424,6 +1474,40 @@ srslte/common/log.h
 srslte/common/timers.h
 ../srsue/hdr/mac/srslte/common/timers.h
 
+../srsue/hdr/phy/phch_common.h
+pthread.h
+-
+string.h
+-
+vector
+-
+srslte/srslte.h
+../srsue/hdr/phy/srslte/srslte.h
+srslte/interfaces/ue_interfaces.h
+../srsue/hdr/phy/srslte/interfaces/ue_interfaces.h
+srslte/radio/radio.h
+../srsue/hdr/phy/srslte/radio/radio.h
+srslte/common/log.h
+../srsue/hdr/phy/srslte/common/log.h
+srslte/common/gen_mch_tables.h
+../srsue/hdr/phy/srslte/common/gen_mch_tables.h
+phy_metrics.h
+../srsue/hdr/phy/phy_metrics.h
+
+../srsue/hdr/phy/phch_worker.h
+string.h
+-
+srslte/srslte.h
+../srsue/hdr/phy/srslte/srslte.h
+srslte/common/thread_pool.h
+../srsue/hdr/phy/srslte/common/thread_pool.h
+srslte/common/trace.h
+../srsue/hdr/phy/srslte/common/trace.h
+phch_common.h
+../srsue/hdr/phy/phch_common.h
+
+../srsue/hdr/phy/phy_metrics.h
+
 /home/uhost8/v3_puneet/srsLTE/srsue/src/mac/demux.cc
 srsue/hdr/mac/mac.h
 /home/uhost8/v3_puneet/srsLTE/srsue/src/mac/srsue/hdr/mac/mac.h
@@ -1465,6 +1549,8 @@ srsue/hdr/mac/mac.h
 /home/uhost8/v3_puneet/srsLTE/srsue/src/mac/srsue/hdr/mac/mac.h
 srsue/hdr/mac/mux.h
 /home/uhost8/v3_puneet/srsLTE/srsue/src/mac/srsue/hdr/mac/mux.h
+srsue/hdr/phy/phch_worker.h
+/home/uhost8/v3_puneet/srsLTE/srsue/src/mac/srsue/hdr/phy/phch_worker.h
 
 /home/uhost8/v3_puneet/srsLTE/srsue/src/mac/proc_phr.cc
 srsue/hdr/mac/proc_phr.h

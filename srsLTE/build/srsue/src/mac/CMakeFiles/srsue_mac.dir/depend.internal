@@ -349,6 +349,7 @@ srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o
  ../lib/include/srslte/common/block_queue.h
  ../lib/include/srslte/common/buffer_pool.h
  ../lib/include/srslte/common/common.h
+ ../lib/include/srslte/common/gen_mch_tables.h
  ../lib/include/srslte/common/interfaces_common.h
  ../lib/include/srslte/common/log.h
  ../lib/include/srslte/common/mac_pcap.h
@@ -356,8 +357,10 @@ srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o
  ../lib/include/srslte/common/pdu.h
  ../lib/include/srslte/common/pdu_queue.h
  ../lib/include/srslte/common/security.h
+ ../lib/include/srslte/common/thread_pool.h
  ../lib/include/srslte/common/threads.h
  ../lib/include/srslte/common/timers.h
+ ../lib/include/srslte/common/trace.h
  ../lib/include/srslte/common/tti_sync.h
  ../lib/include/srslte/common/tti_sync_cv.h
  ../lib/include/srslte/config.h
@@ -422,6 +425,7 @@ srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o
  ../lib/include/srslte/phy/resampling/decim.h
  ../lib/include/srslte/phy/resampling/interp.h
  ../lib/include/srslte/phy/resampling/resample_arb.h
+ ../lib/include/srslte/phy/rf/rf.h
  ../lib/include/srslte/phy/scrambling/scrambling.h
  ../lib/include/srslte/phy/sync/cfo.h
  ../lib/include/srslte/phy/sync/cp.h
@@ -441,6 +445,7 @@ srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o
  ../lib/include/srslte/phy/utils/filter.h
  ../lib/include/srslte/phy/utils/ringbuffer.h
  ../lib/include/srslte/phy/utils/vector.h
+ ../lib/include/srslte/radio/radio.h
  ../lib/include/srslte/srslte.h
  ../lib/include/srslte/upper/rlc_interface.h
  ../srsue/hdr/mac/demux.h
@@ -455,6 +460,9 @@ srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_bsr.cc.o
  ../srsue/hdr/mac/proc_sr.h
  ../srsue/hdr/mac/ul_harq.h
  ../srsue/hdr/mac/ul_sps.h
+ ../srsue/hdr/phy/phch_common.h
+ ../srsue/hdr/phy/phch_worker.h
+ ../srsue/hdr/phy/phy_metrics.h
  /home/uhost8/v3_puneet/srsLTE/srsue/src/mac/proc_bsr.cc
  lib/include/srslte/version.h
 srsue/src/mac/CMakeFiles/srsue_mac.dir/proc_phr.cc.o
