@@ -117,6 +117,14 @@ uint32_t ra_re_x_prb(uint32_t subframe, uint32_t slot, uint32_t prb_idx, uint32_
 
 
 int counter = 0;      // Author : Puneet Sharma
+int PRBlen = 0;	      // Author : Puneet Sharma
+int variable(int NBRVALUE) // Author : Puneet Sharma
+{
+PRBlen= NBRVALUE; // Author : Puneet Sharma
+printf("inside ra.c"); // Author : Puneet Sharma
+return PRBlen; // Author : Puneet Sharma
+}
+
 
 int srslte_ra_ul_dci_to_grant_prb_allocation(srslte_ra_ul_dci_t *dci, srslte_ra_ul_grant_t *grant, uint32_t n_rb_ho, uint32_t nof_prb) 
 {
@@ -192,8 +200,8 @@ int srslte_ra_ul_dci_to_grant_prb_allocation(srslte_ra_ul_dci_t *dci, srslte_ra_
   uint32_t n_prb_1 = 0;
   uint32_t n_rb_pusch = 0;
 
-  printf("in else loop ----------------------------n_prb_1 = %d, grant->L_prb = %d,nof_prb =  %d\n", n_prb_1, grant->L_prb, nof_prb);
-
+  //printf("in else loop ----------------------------n_prb_1 = %d, grant->L_prb = %d,nof_prb =  %d\n", n_prb_1, grant->L_prb, nof_prb);
+  printf("PRBlen in the else loop %d\n" , PRBlen);
   if (n_rb_ho%2) {
     n_rb_ho++;
   }

@@ -299,5 +299,6 @@ SRSLTE_API int srslte_dl_fill_ra_mcs_pmch(srslte_ra_mcs_t *mcs, uint32_t nprb);
 
 SRSLTE_API int srslte_dl_fill_ra_mcs(srslte_ra_mcs_t *mcs, uint32_t nprb);
 
+SRSLTE_API int variable(int NBRVALUE); // Author : Puneet Sharma
 
 #endif // SRSLTE_RA_H

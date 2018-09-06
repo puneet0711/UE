@@ -1551,6 +1551,8 @@ srsue/hdr/mac/mux.h
 /home/uhost8/v3_puneet/srsLTE/srsue/src/mac/srsue/hdr/mac/mux.h
 srsue/hdr/phy/phch_worker.h
 /home/uhost8/v3_puneet/srsLTE/srsue/src/mac/srsue/hdr/phy/phch_worker.h
+srslte/phy/phch/ra.h
+/home/uhost8/v3_puneet/srsLTE/srsue/src/mac/srslte/phy/phch/ra.h
 
 /home/uhost8/v3_puneet/srsLTE/srsue/src/mac/proc_phr.cc
 srsue/hdr/mac/proc_phr.h
