@@ -179,10 +179,12 @@ int srslte_dci_msg_to_ul_grant(srslte_dci_msg_t *msg, uint32_t nof_prb,
     bzero(grant, sizeof(srslte_ra_ul_grant_t));
     
     if (srslte_dci_msg_unpack_pusch(msg, ul_dci, nof_prb)) {
+      fprintf(stderr, "Error in srslte_dci_msg_unpack_pusch");
       return ret;
     } 
 
     if (srslte_ra_ul_dci_to_grant(ul_dci, nof_prb, n_rb_ho, grant)) {
+      fprintf(stderr, "Error in srslte_ra_ul_dci_to_grant");
       return ret;
     }
     

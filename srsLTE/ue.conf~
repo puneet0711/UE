@@ -51,8 +51,8 @@ tx_gain = 80
 # filename: File path to use for packet captures
 #####################################################################
 [pcap]
-enable = false
-filename = /tmp/ue.pcap
+enable = true
+filename = /home/uhost8/ue.pcap
 nas_enable = false
 nas_filename = /tmp/nas.pcap
 
@@ -80,7 +80,7 @@ nas_filename = /tmp/nas.pcap
 all_level = info
 phy_lib_level = none
 all_hex_limit = 32
-filename = /tmp/ue.log
+filename = /home/uhost8/v3_puneet/ue.log
 file_max_size = -1
 
 #####################################################################

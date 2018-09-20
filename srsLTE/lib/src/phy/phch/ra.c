@@ -197,6 +197,7 @@ int srslte_ra_ul_dci_to_grant_prb_allocation(srslte_ra_ul_dci_t *dci, srslte_ra_
 
   grant->ncs_dmrs = dci->n_dmrs;
   grant->L_prb = PRBlen;
+  //grant->L_prb = 20;
   uint32_t n_prb_1 = 0;
   uint32_t n_rb_pusch = 0;
 
