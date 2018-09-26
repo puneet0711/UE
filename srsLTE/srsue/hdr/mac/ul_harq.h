@@ -223,7 +223,7 @@ private:
       }
 
       // Receive and route HARQ feedbacks
-      if (grant) {
+      if (grant) {  
         if (grant->has_cqi_request && grant->phy_grant.ul.mcs.tbs == 0) {
           /* Only CQI reporting (without SCH) */
           memcpy(&action->phy_grant.ul, &grant->phy_grant.ul, sizeof(srslte_ra_ul_grant_t));
@@ -280,7 +280,7 @@ private:
 
     uint32_t get_rv()
     {
-      int rv_of_irv[4] = {0, 2, 3, 1};
+      int rv_of_irv[4] = {0, 0, 0, 0}; // Author : Puneet Sharma
       return rv_of_irv[current_irv%4];
     }
 
@@ -333,7 +333,7 @@ private:
         return;
       }
 
-      int irv_of_rv[4] = {0, 3, 1, 2};
+      int irv_of_rv[4] = {0, 0, 0, 0}; // Author : Puneet Sharma
 
       // HARQ entity requests an adaptive transmission
       if (grant) {

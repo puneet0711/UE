@@ -959,40 +959,47 @@ bool phch_worker::decode_pdcch_ul(mac_interface_phy::mac_grant_t* grant)
     grant->has_cqi_request = false; // In contention-based Random Access CQI request bit is reserved
     Debug("RAR grant found for TTI=%d\n", tti);
     ret = true;  
-  } else {
+    } else {
     ul_rnti = phy->get_ul_rnti(tti);
     if (ul_rnti) {
-      if (testcounter<80){    // Author : Puneet Sharma
+      if (testcounter<79){    // Author : Puneet Sharma
       if (srslte_ue_dl_find_ul_dci(&ue_dl, cfi, tti%10, ul_rnti, &dci_msg) != 1) {
         return false;
       }
       dci_msg_new= dci_msg;// Author : Puneet Sharma
       nof_prb = cell.nof_prb; // Author : Puneet Sharma 
-       testcounter++; 
+      testcounter++; 
       }else {
-       if (scheduling_request){ // Author : Puneet Sharma
+      if (scheduling_request){ // Author : Puneet Sharma
              return false;
-        }       
+      }       
+      
 
-       if (tti !=PDSCH_counter+4) 
-       {
-		return false;
-
-       }
-	Info("Copied Version\n");// Author : Puneet Sharma              
-       }
-	
+      if (tti !=PDSCH_counter+4) 
+      {
+		  return false;
+      }
+	    Info("Copied Version\n");// Author : Puneet Sharma              
+      }
+	    cell.nof_prb = nof_prb;
       if (srslte_dci_msg_to_ul_grant(&dci_msg_new, nof_prb, pusch_hopping.hopping_offset, 
         &dci_unpacked, &grant->phy_grant.ul, tti)) 
       {
         Error("Converting DCI message to UL grant\n");
         return false;   
       }
+
+      if (testcounter>79){   // Author : Puneet Sharma
+      grant->phy_grant.ul.mcs.idx =15;  
+      dci_unpacked.rv_idx=0;      
+      }
+
       grant->rnti_type = type; 
       grant->is_from_rar = false;
       grant->has_cqi_request = dci_unpacked.cqi_request;
       ret = true; 
       scheduling_request = false;
+      
       
       char hexstr[512];
       hexstr[0]='\0';
@@ -1009,22 +1016,22 @@ bool phch_worker::decode_pdcch_ul(mac_interface_phy::mac_grant_t* grant)
     }
   }
 
-
-  // Handle Format0 adaptive retx
+  if (testcounter>80){
+// Handle Format0 adaptive retx
   if (ret) {
     // Use last TBS for this TB in case of mcs>28
     if (grant->phy_grant.ul.mcs.idx > 28 && grant->phy_grant.ul.mcs.mod == SRSLTE_MOD_LAST) {
       // Make sure we received a grant in the previous TTI for this PID
       grant->phy_grant.ul.mcs.tbs = phy->last_ul_tbs[UL_PIDOF(TTI_TX(tti))];
       grant->phy_grant.ul.mcs.mod = phy->last_ul_mod[UL_PIDOF(TTI_TX(tti))];
-      grant->phy_grant.ul.mcs.idx = phy->last_ul_idx[UL_PIDOF(TTI_TX(tti))];
+      grant->phy_grant.ul.mcs.idx = 15;
       grant->phy_grant.ul.Qm      = srslte_mod_bits_x_symbol(grant->phy_grant.ul.mcs.mod);
     }
   }
   if (ret) {
     phy->last_ul_tbs[UL_PIDOF(TTI_TX(tti))] = grant->phy_grant.ul.mcs.tbs;
     phy->last_ul_mod[UL_PIDOF(TTI_TX(tti))] = grant->phy_grant.ul.mcs.mod;
-    phy->last_ul_idx[UL_PIDOF(TTI_TX(tti))] = grant->phy_grant.ul.mcs.idx;
+    phy->last_ul_idx[UL_PIDOF(TTI_TX(tti))] = 15;
     phy->last_ul_tti[UL_PIDOF(TTI_TX(tti))] = TTI_RX_ACK(tti);
     /* Limit UL modulation if not supported by the UE or disabled by higher layers */
     if (!phy->config->enable_64qam) {
@@ -1034,6 +1041,12 @@ bool phch_worker::decode_pdcch_ul(mac_interface_phy::mac_grant_t* grant)
       }
     }
   }
+
+
+
+
+  }
+  
 
   /* Make sure the grant is valid */
   if (ret && !srslte_dft_precoding_valid_prb(grant->phy_grant.ul.L_prb) && grant->phy_grant.ul.L_prb <= cell.nof_prb) {
@@ -1052,7 +1065,7 @@ bool phch_worker::decode_pdcch_ul(mac_interface_phy::mac_grant_t* grant)
       srslte_ra_pusch_fprint(stdout, &dci_unpacked, nof_prb);
     }
   }
-
+  Info ("ret is %d\n", ret);
   return ret;
 }
 
