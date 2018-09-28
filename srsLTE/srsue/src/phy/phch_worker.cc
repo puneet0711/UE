@@ -26,6 +26,7 @@
 
 #include <unistd.h>
 #include <string.h>
+#include <stdio.h>
 #include "srsue/hdr/phy/phch_worker.h"
 #include "srslte/srslte.h"
 #include "srslte/interfaces/ue_interfaces.h"
@@ -969,17 +970,25 @@ bool phch_worker::decode_pdcch_ul(mac_interface_phy::mac_grant_t* grant)
       dci_msg_new= dci_msg;// Author : Puneet Sharma
       nof_prb = cell.nof_prb; // Author : Puneet Sharma 
       testcounter++; 
-      }else {
+      }else 
+      {
       if (scheduling_request){ // Author : Puneet Sharma
              return false;
-      }       
-      
+      }           
 
-      if (tti !=PDSCH_counter+4) 
+      if (tti ==PDSCH_counter+4) 
       {
-		  return false;
+		  Info("Send first PUSCH\n");
       }
-	    Info("Copied Version\n");// Author : Puneet Sharma              
+      else if (tti ==PDSCH_counter+4+9 )
+      {
+        Info("Send second PUSCH\n");
+      }
+      else
+      {
+        return false;
+      }
+
       }
 	    cell.nof_prb = nof_prb;
       if (srslte_dci_msg_to_ul_grant(&dci_msg_new, nof_prb, pusch_hopping.hopping_offset, 
@@ -991,7 +1000,11 @@ bool phch_worker::decode_pdcch_ul(mac_interface_phy::mac_grant_t* grant)
 
       if (testcounter>79){   // Author : Puneet Sharma
       grant->phy_grant.ul.mcs.idx =15;  
-      dci_unpacked.rv_idx=0;      
+      dci_unpacked.rv_idx=0;  
+      if (testcounter==80){
+        printf("Without Scheduling Mode\n");
+      }
+          
       }
 
       grant->rnti_type = type; 
@@ -1065,7 +1078,7 @@ bool phch_worker::decode_pdcch_ul(mac_interface_phy::mac_grant_t* grant)
       srslte_ra_pusch_fprint(stdout, &dci_unpacked, nof_prb);
     }
   }
-  Info ("ret is %d\n", ret);
+  //Info ("ret is %d\n", ret);
   return ret;
 }
 

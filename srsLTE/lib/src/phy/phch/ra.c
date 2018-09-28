@@ -203,7 +203,7 @@ int srslte_ra_ul_dci_to_grant_prb_allocation(srslte_ra_ul_dci_t *dci, srslte_ra_
 
   //printf("in else loop ----------------------------n_prb_1 = %d, grant->L_prb = %d,nof_prb =  %d\n", n_prb_1, grant->L_prb, nof_prb);
   
-printf("the else loop PRBlen = %d & grant->L_prb = %d\n" , PRBlen, grant->L_prb);
+//printf("the else loop PRBlen = %d & grant->L_prb = %d\n" , PRBlen, grant->L_prb);
 
   if (n_rb_ho%2) {
     n_rb_ho++;
