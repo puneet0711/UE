@@ -247,6 +247,8 @@ srslte_dci_msg_t dci_msg_new;  // Author : Puneet Sharma
 bool scheduling_request = false;
 bool PDSCH_send= false;
 uint32_t PDSCH_counter=0;
+bool change = false;
+int changecount = 0;
 void phch_worker::work_imp()
 {
   if (!cell_initiated) {
@@ -257,6 +259,17 @@ void phch_worker::work_imp()
   pthread_mutex_lock(&mutex);
 
   Debug("TTI %d running\n", tti);
+
+  if (tti==1641)
+  {
+    changecount++;
+  }
+
+  if (changecount==2)
+  {
+    change=true;
+  }
+
 
 #ifdef LOG_EXECTIME
   gettimeofday(&logtime_start[1], NULL);
@@ -963,10 +976,11 @@ bool phch_worker::decode_pdcch_ul(mac_interface_phy::mac_grant_t* grant)
     } else {
     ul_rnti = phy->get_ul_rnti(tti);
     if (ul_rnti) {
-      if (testcounter<79){    // Author : Puneet Sharma
+      if (testcounter<25){    // Author : Puneet Sharma
       if (srslte_ue_dl_find_ul_dci(&ue_dl, cfi, tti%10, ul_rnti, &dci_msg) != 1) {
         return false;
       }
+      Info("This is Received PDCCH\n");
       dci_msg_new= dci_msg;// Author : Puneet Sharma
       nof_prb = cell.nof_prb; // Author : Puneet Sharma 
       testcounter++; 
@@ -976,18 +990,44 @@ bool phch_worker::decode_pdcch_ul(mac_interface_phy::mac_grant_t* grant)
              return false;
       }           
 
+
+
+      if (!change) 
+      {
+
       if (tti ==PDSCH_counter+4) 
       {
-		  Info("Send first PUSCH\n");
+      Info("This is Copied PDCCH - first\n");
       }
       else if (tti ==PDSCH_counter+4+9 )
       {
-        Info("Send second PUSCH\n");
+        Info("This is Copied PDCCH - second\n");
       }
       else
       {
         return false;
       }
+
+      } else {
+
+      if (tti ==PDSCH_counter+2) 
+      {
+      Info("This is Copied PDCCH - first\n");
+      }
+      else if (tti ==PDSCH_counter+2+9 )
+      {
+        Info("This is Copied PDCCH - second\n");
+      }
+      else
+      {
+        return false;
+      } 
+
+
+      }
+
+
+
 
       }
 	    cell.nof_prb = nof_prb;
@@ -998,10 +1038,10 @@ bool phch_worker::decode_pdcch_ul(mac_interface_phy::mac_grant_t* grant)
         return false;   
       }
 
-      if (testcounter>79){   // Author : Puneet Sharma
+      if (testcounter>25){   // Author : Puneet Sharma
       grant->phy_grant.ul.mcs.idx =15;  
       dci_unpacked.rv_idx=0;  
-      if (testcounter==80){
+      if (testcounter==26){
         printf("Without Scheduling Mode\n");
       }
           
@@ -1316,10 +1356,23 @@ void phch_worker::encode_pusch(srslte_ra_ul_grant_t *grant, uint8_t *payload, ui
 {
   char timestr[64];
   timestr[0]='\0';
+
+  if (change)
+  {
+
+    int t= tti+2;
   
+      if (srslte_ue_ul_cfg_grant(&ue_ul, grant,t, rv, current_tx_nb)) {
+    Error("Configuring UL grant\n");
+  }
+  } else {
   if (srslte_ue_ul_cfg_grant(&ue_ul, grant, TTI_TX(tti), rv, current_tx_nb)) {
     Error("Configuring UL grant\n");
   }
+
+  }
+  
+
 
   if (srslte_ue_ul_pusch_encode_rnti_softbuffer(&ue_ul, 
                                                 payload, uci_data, 
